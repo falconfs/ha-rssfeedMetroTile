@@ -122,4 +122,4 @@ export const ERROR_MESSAGES = {
 export const SWIPE_THRESHOLD = 50; // px
 export const TOUCH_TIMEOUT = 300; // ms
 
-export const VERSION = '2.2.0';
+export const VERSION = '2.2.1';

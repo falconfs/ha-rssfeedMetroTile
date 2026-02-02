@@ -5,6 +5,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.1] - 2024-02-03
+
+### 🐛 Fixed - HACS Compliance
+
+This is a patch release to fix HACS repository structure compliance.
+
+#### Changes
+
+- **HACS Compatibility**: Committed `dist/rssfeed-metro-tile.js` to repository
+  - HACS requires files in `dist/`, latest release, or root
+  - Without committed files or releases, HACS showed "not compliant" error
+  - Repository is now immediately HACS-compatible
+
+- **GitHub Actions**: Added release workflow
+  - Automatically builds and attaches files to GitHub releases
+  - Future releases will work seamlessly with HACS
+
+- **Documentation**: Added `HACS_SETUP.md`
+  - Explains HACS requirements
+  - Provides troubleshooting steps
+  - Documents release process
+
+#### Technical Details
+
+- Removed `dist/` from `.gitignore`
+- Committed built file (70KB)
+- Added automated release workflow
+- No functional changes to the card
+
 ## [2.2.0] - 2024-02-03
 
 ### ✨ Added - Dynamic Configuration System
@@ -256,6 +285,7 @@ aspect_ratio: '1:1'
 
 ---
 
+[2.2.1]: https://github.com/falconfs/ha-rssfeedMetroTile/releases/tag/v2.2.1
 [2.2.0]: https://github.com/falconfs/ha-rssfeedMetroTile/releases/tag/v2.2.0
 [2.1.0]: https://github.com/falconfs/ha-rssfeedMetroTile/releases/tag/v2.1.0
 [2.0.0]: https://github.com/falconfs/ha-rssfeedMetroTile/releases/tag/v2.0.0
