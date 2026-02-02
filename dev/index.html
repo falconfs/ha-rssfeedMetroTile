@@ -500,9 +500,7 @@
               </select>
             </div>
           </div>
-          <div class="grid-info">
-            Current Grid: <strong id="currentGrid">6×2</strong>
-          </div>
+          <div class="grid-info">Current Grid: <strong id="currentGrid">6×2</strong></div>
         </div>
 
         <!-- Preview: Single View -->
@@ -568,16 +566,21 @@
     <!-- Scripts -->
     <script type="module">
       // Import dependencies
-      import { generateMockFeedItems, createMockHass, HA_THEMES, GRID_PRESETS } from './mock-data.ts';
-      import { 
-        initializeDynamicUI, 
-        updateControlValues, 
+      import {
+        generateMockFeedItems,
+        createMockHass,
+        HA_THEMES,
+        GRID_PRESETS,
+      } from './mock-data.js';
+      import {
+        initializeDynamicUI,
+        updateControlValues,
         getControlValues,
         loadPreset,
         getPresetOptions,
         getAllControlIds,
-        CATEGORY_LABELS
-      } from './ui-generator.ts';
+        CATEGORY_LABELS,
+      } from './ui-generator.js';
       import { DEFAULT_CONFIG } from '../src/constants.ts';
       import { EditorView, basicSetup } from 'https://esm.sh/codemirror@6.0.1';
       import { yaml } from 'https://esm.sh/@codemirror/lang-yaml@6.1.1';
@@ -596,7 +599,7 @@
       // Initialize
       window.addEventListener('DOMContentLoaded', () => {
         console.log('🚀 Initializing dev environment with dynamic config system...');
-        
+
         initializeMockData();
         initializeDynamicControls();
         initializePresetSelector();
@@ -608,7 +611,7 @@
         updateSystemInfo();
         createCards();
         updateStatusDisplay();
-        
+
         console.log('✅ Dev environment ready!');
       });
 
@@ -621,11 +624,11 @@
       // Initialize Dynamic Controls - THIS IS THE MAGIC! ✨
       function initializeDynamicControls() {
         console.log('📝 Injecting dynamic controls...');
-        
+
         initializeDynamicUI({
           containerId: 'dynamicControls',
           initialConfig: configState,
-          onConfigChange: (newConfig) => {
+          onConfigChange: newConfig => {
             if (!isUpdatingConfig) {
               isUpdatingConfig = true;
               configState = newConfig;
@@ -634,9 +637,9 @@
               updateYAMLFromConfig();
               isUpdatingConfig = false;
             }
-          }
+          },
         });
-        
+
         console.log('✅ Dynamic controls injected!');
       }
 
@@ -650,7 +653,7 @@
           select.appendChild(option);
         });
 
-        select.addEventListener('change', (e) => {
+        select.addEventListener('change', e => {
           if (e.target.value) {
             const presetConfig = loadPreset(e.target.value);
             if (presetConfig) {
@@ -697,7 +700,7 @@
         isUpdatingYAML = true;
         const yaml = configToYAML(configState);
         yamlEditor.dispatch({
-          changes: { from: 0, to: yamlEditor.state.doc.length, insert: yaml }
+          changes: { from: 0, to: yamlEditor.state.doc.length, insert: yaml },
         });
         isUpdatingYAML = false;
       }
@@ -753,12 +756,20 @@
 
             if (view === 'compare') {
               createCard('cardWrapper2', configState);
-              createCard('cardWrapper3', { ...configState, aspect_ratio: '1:1', transition: 'fade' });
+              createCard('cardWrapper3', {
+                ...configState,
+                aspect_ratio: '1:1',
+                transition: 'fade',
+              });
             } else if (view === 'grid') {
               createCard('cardWrapper4', configState);
               createCard('cardWrapper5', { ...configState, aspect_ratio: '1:1' });
               createCard('cardWrapper6', { ...configState, image_layout: 'split' });
-              createCard('cardWrapper7', { ...configState, show_navigation: false, show_indicators: false });
+              createCard('cardWrapper7', {
+                ...configState,
+                show_navigation: false,
+                show_indicators: false,
+              });
             }
           });
         });
@@ -766,7 +777,7 @@
 
       // Initialize Themes
       function initializeThemes() {
-        document.getElementById('haTheme').addEventListener('change', (e) => {
+        document.getElementById('haTheme').addEventListener('change', e => {
           const theme = HA_THEMES[e.target.value] || HA_THEMES['default-light'];
           Object.entries(theme).forEach(([key, value]) => {
             document.documentElement.style.setProperty(key, value);
@@ -776,7 +787,7 @@
 
       // Initialize Grid Simulator
       function initializeGridSimulator() {
-        document.getElementById('gridPreset').addEventListener('change', (e) => {
+        document.getElementById('gridPreset').addEventListener('change', e => {
           const preset = GRID_PRESETS[e.target.value];
           if (preset) {
             document.getElementById('currentGrid').textContent = preset.label;
@@ -788,7 +799,8 @@
       // Update System Info
       function updateSystemInfo() {
         document.getElementById('totalControls').textContent = getAllControlIds().length;
-        document.getElementById('totalCategories').textContent = Object.keys(CATEGORY_LABELS).length;
+        document.getElementById('totalCategories').textContent =
+          Object.keys(CATEGORY_LABELS).length;
       }
 
       // Create Cards
@@ -810,9 +822,9 @@
       // Update Status Display
       function updateStatusDisplay() {
         document.getElementById('statusEntity').textContent = configState.entity || 'None';
-        document.getElementById('statusLayout').textContent = 
+        document.getElementById('statusLayout').textContent =
           `${configState.grid_columns || 6}×${configState.grid_rows || 2} Grid, ${configState.aspect_ratio || 'dynamic'} ratio`;
-        document.getElementById('statusCarousel').textContent = 
+        document.getElementById('statusCarousel').textContent =
           `${configState.slide_duration_sec || 5}s ${configState.transition || 'slide-vertical'}`;
       }
 
@@ -825,13 +837,13 @@
       }
 
       // Global functions for buttons
-      window.copyYAML = function() {
+      window.copyYAML = function () {
         const yaml = configToYAML(configState);
         navigator.clipboard.writeText(yaml);
         showToast('✅ YAML copied to clipboard!');
       };
 
-      window.resetConfig = function() {
+      window.resetConfig = function () {
         configState = { ...DEFAULT_CONFIG, entity: 'sensor.die_zeit' };
         updateControlValues(configState);
         createCards();
@@ -840,14 +852,14 @@
         showToast('🔄 Config reset to defaults');
       };
 
-      window.shareConfig = function() {
+      window.shareConfig = function () {
         const url = new URL(window.location);
         url.searchParams.set('config', btoa(JSON.stringify(configState)));
         navigator.clipboard.writeText(url.toString());
         showToast('🔗 Share URL copied!');
       };
 
-      window.exportConfig = function() {
+      window.exportConfig = function () {
         const json = JSON.stringify(configState, null, 2);
         const blob = new Blob([json], { type: 'application/json' });
         const url = URL.createObjectURL(blob);

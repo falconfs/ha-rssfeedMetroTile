@@ -7,17 +7,23 @@
  */
 
 import {
+  CONFIG_SCHEMA,
   CATEGORY_LABELS,
   getControlsByCategory,
   generateControlHTML,
   getAllControlIds,
   updateControlVisibility,
-} from './config-generator';
+  isControlVisible,
+} from './config-generator.js';
+
+// Re-export CATEGORY_LABELS so it's available to index.html
+export { CATEGORY_LABELS, getAllControlIds };
 
 /**
  * Inject all controls into the DOM
+ * @param {string} containerId
  */
-export function injectControls(containerId: string = 'dynamicControls'): void {
+export function injectControls(containerId = 'dynamicControls') {
   const container = document.getElementById(containerId);
   if (!container) {
     console.error(`Container #${containerId} not found`);
@@ -57,27 +63,25 @@ export function injectControls(containerId: string = 'dynamicControls'): void {
 
 /**
  * Attach event listeners to all controls
+ * @param {(id: string, value: any) => void} callback
  */
-export function attachControlListeners(callback: (id: string, value: any) => void): void {
+export function attachControlListeners(callback) {
   const controlIds = getAllControlIds();
 
   controlIds.forEach(id => {
-    const element = document.getElementById(id) as
-      | HTMLInputElement
-      | HTMLSelectElement
-      | HTMLTextAreaElement;
+    const element = document.getElementById(id);
     if (!element) return;
 
     const eventType =
       element.type === 'checkbox' ? 'change' : element.type === 'number' ? 'input' : 'change';
 
     element.addEventListener(eventType, () => {
-      let value: any;
+      let value;
 
       if (element.type === 'checkbox') {
-        value = (element as HTMLInputElement).checked;
+        value = element.checked;
       } else if (element.type === 'number') {
-        value = parseInt((element as HTMLInputElement).value);
+        value = parseInt(element.value);
       } else {
         value = element.value;
       }
@@ -89,19 +93,17 @@ export function attachControlListeners(callback: (id: string, value: any) => voi
 
 /**
  * Update all control values from a config object
+ * @param {Record<string, any>} config
  */
-export function updateControlValues(config: Record<string, any>): void {
+export function updateControlValues(config) {
   Object.keys(config).forEach(key => {
-    const element = document.getElementById(key) as
-      | HTMLInputElement
-      | HTMLSelectElement
-      | HTMLTextAreaElement;
+    const element = document.getElementById(key);
     if (!element) return;
 
     if (element.type === 'checkbox') {
-      (element as HTMLInputElement).checked = !!config[key];
+      element.checked = !!config[key];
     } else if (element.type === 'number') {
-      (element as HTMLInputElement).value = String(config[key] || 0);
+      element.value = String(config[key] || 0);
     } else {
       element.value = String(config[key] || '');
     }
@@ -110,22 +112,20 @@ export function updateControlValues(config: Record<string, any>): void {
 
 /**
  * Get current values from all controls
+ * @returns {Record<string, any>}
  */
-export function getControlValues(): Record<string, any> {
-  const config: Record<string, any> = {};
+export function getControlValues() {
+  const config = {};
   const controlIds = getAllControlIds();
 
   controlIds.forEach(id => {
-    const element = document.getElementById(id) as
-      | HTMLInputElement
-      | HTMLSelectElement
-      | HTMLTextAreaElement;
+    const element = document.getElementById(id);
     if (!element) return;
 
     if (element.type === 'checkbox') {
-      config[id] = (element as HTMLInputElement).checked;
+      config[id] = element.checked;
     } else if (element.type === 'number') {
-      config[id] = parseInt((element as HTMLInputElement).value) || 0;
+      config[id] = parseInt(element.value) || 0;
     } else {
       config[id] = element.value;
     }
@@ -138,7 +138,7 @@ export function getControlValues(): Record<string, any> {
  * Setup dependency tracking for controls
  * Automatically shows/hides controls based on dependencies
  */
-export function setupDependencyTracking(): void {
+export function setupDependencyTracking() {
   const controlIds = getAllControlIds();
 
   controlIds.forEach(id => {
@@ -245,9 +245,11 @@ export const PRESETS = {
 
 /**
  * Load a preset configuration
+ * @param {string} presetName
+ * @returns {Record<string, any> | null}
  */
-export function loadPreset(presetName: string): Record<string, any> | null {
-  const preset = PRESETS[presetName as keyof typeof PRESETS];
+export function loadPreset(presetName) {
+  const preset = PRESETS[presetName];
   if (!preset) return null;
 
   return preset.config;
@@ -255,8 +257,9 @@ export function loadPreset(presetName: string): Record<string, any> | null {
 
 /**
  * Get preset options for a select dropdown
+ * @returns {Array<{value: string, label: string}>}
  */
-export function getPresetOptions(): Array<{ value: string; label: string }> {
+export function getPresetOptions() {
   return [
     { value: '', label: 'Select Preset...' },
     ...Object.entries(PRESETS).map(([key, preset]) => ({
@@ -268,12 +271,12 @@ export function getPresetOptions(): Array<{ value: string; label: string }> {
 
 /**
  * Initialize the dynamic UI system
+ * @param {Object} config
+ * @param {string} [config.containerId='dynamicControls']
+ * @param {(config: Record<string, any>) => void} [config.onConfigChange]
+ * @param {Record<string, any>} [config.initialConfig]
  */
-export function initializeDynamicUI(config: {
-  containerId?: string;
-  onConfigChange?: (config: Record<string, any>) => void;
-  initialConfig?: Record<string, any>;
-}) {
+export function initializeDynamicUI(config) {
   const { containerId = 'dynamicControls', onConfigChange, initialConfig } = config;
 
   // Step 1: Inject controls
