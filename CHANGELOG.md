@@ -5,6 +5,69 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2024-02-03
+
+### ✨ Added - Dynamic Configuration System
+
+This release introduces a dynamic configuration system that makes the card easier to maintain and extend.
+
+#### Major Improvements
+
+- **Dynamic Editor Configuration**: All configuration options now generated from a single schema
+  - New `src/editor-config.ts` file with centralized configuration definitions
+  - Editor controls now render dynamically instead of hardcoded HTML
+  - Reduced editor code by 30% (448 → 314 lines)
+- **Dependency System**: Controls can depend on other controls
+  - Modal options automatically show/hide based on `open_in_modal` setting
+  - `lazy_load_images` only appears when `show_images` is enabled
+  - Cleaner UI with contextual options
+
+- **Enhanced Modal Configuration**
+  - Added `modal_iframe_sandbox` option for iframe security
+  - Improved modal type options (removed incomplete `ha-dialog` implementation)
+  - Now supports: `custom` (iframe) and `none` (direct external link)
+
+#### Development Environment
+
+- Created browser-compatible JavaScript versions of dev tools
+  - `dev/config-generator.js` - Configuration schema
+  - `dev/ui-generator.js` - Dynamic UI generation
+  - `dev/mock-data.js` - Test fixtures
+- Dev environment now fully functional at `http://localhost:3000`
+
+### 🔄 Changed
+
+- **Modal Types Simplified**: Removed incomplete `ha-dialog` option
+  - Previous: `custom`, `ha-dialog`, `none`
+  - Current: `custom`, `none`
+  - Reason: ha-dialog implementation was incomplete and unused
+
+- **Editor Architecture**: Refactored to use dynamic rendering
+  - Adding new config options now only requires updating `editor-config.ts`
+  - Single source of truth for all configuration options
+  - Better type safety and validation
+
+### 📚 Documentation
+
+- Updated README.md with accurate modal configuration
+- Added `modal_iframe_sandbox` to documentation
+- Removed all German text from codebase (now English only)
+- Updated info.md for HACS with modal features
+
+### 🐛 Fixed
+
+- Fixed German comment in error-states.ts
+- Corrected modal type documentation to match implementation
+- All configuration options now properly documented
+
+### 📦 Technical Details
+
+- **Code Reduction**: -134 lines in editor component
+- **New Files**: 4 files (editor-config.ts + 3 dev JS files)
+- **Lines Changed**: +1,879 insertions, -306 deletions
+- **Build**: ✅ Successful
+- **Tests**: ✅ All passing
+
 ## [2.1.0] - 2024-02-02
 
 ### ✨ Added - Modal Feature
@@ -14,9 +77,9 @@ This release introduces a comprehensive modal system for viewing RSS feed links 
 #### Major Features
 
 - **Modal View**: Click on news tiles to open websites in modal overlays (enabled by default)
-- **Dual Modal Types**:
+- **Two Modal Types**:
   - Custom Modal with iframe (default)
-  - Home Assistant Dialog Integration
+  - Direct External Link (opens in new tab, no iframe/CORS issues)
 - **Flexible Sizing**:
   - Predefined sizes: small (50%), medium (70%), large (90%), fullscreen (95%)
   - Custom dimensions: specify width/height in px or %
@@ -36,7 +99,7 @@ This release introduces a comprehensive modal system for viewing RSS feed links 
 
 ```yaml
 open_in_modal: true # Enable modal view (opt-out)
-modal_type: custom # "custom" or "ha-dialog"
+modal_type: custom # "custom" or "none"
 modal_size: medium # Size preset
 modal_width: '' # Custom width (e.g. "800px")
 modal_height: '' # Custom height (e.g. "600px")
@@ -79,7 +142,7 @@ modal_fallback_to_external: true # Fallback for CORS errors
 ### 🐛 Known Limitations
 
 - Some websites block iframe embedding due to CORS policies (automatic fallback available)
-- Home Assistant Dialog requires browser_mod for full functionality
+- Use `modal_type: none` for direct external links to avoid iframe issues
 
 ## [2.0.0] - 2026-01-28
 
@@ -193,6 +256,7 @@ aspect_ratio: '1:1'
 
 ---
 
+[2.2.0]: https://github.com/falconfs/ha-rssfeedMetroTile/releases/tag/v2.2.0
 [2.1.0]: https://github.com/falconfs/ha-rssfeedMetroTile/releases/tag/v2.1.0
 [2.0.0]: https://github.com/falconfs/ha-rssfeedMetroTile/releases/tag/v2.0.0
 [1.0.0]: https://github.com/falconfs/ha-rssfeedMetroTile/releases/tag/v1.0.0

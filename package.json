@@ -1,6 +1,6 @@
 {
   "name": "rssfeed-metro-tile",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "RSS Feed Metro Tile for Home Assistant",
   "type": "module",
   "main": "dist/rssfeed-metro-tile.js",
