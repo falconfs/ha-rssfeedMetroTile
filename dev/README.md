@@ -1,5 +1,20 @@
 # Development Environment - User Guide
 
+## 🎉 NEW: Dynamic Configuration System
+
+**The dev environment now uses automatically generated UI controls!**
+
+✨ **What does this mean?**
+
+- Controls are generated from TypeScript types
+- New config options automatically get UI
+- No manual HTML editing needed
+- Always in sync with the main codebase
+
+📚 **See:** [DYNAMIC_CONFIG.md](./DYNAMIC_CONFIG.md) for details
+
+---
+
 ## 🚀 Quick Start
 
 ### Start Development Server
@@ -24,17 +39,22 @@ Then open: **http://localhost:3000**
 - **Right Panel**: Live card preview with grid simulator
 - Resizable and mobile-responsive
 
-### 2. **Complete Configuration Controls** (18 Options)
+### 2. **Dynamic Configuration Controls** (30+ Options)
+
+**Automatically generated from source code!**
 
 All Home Assistant editor options available:
 
-- ✅ Entity selection (14 mock entities)
-- ✅ Layout (aspect ratio, height, image layout)
-- ✅ Carousel (duration, transition, auto-play, pause)
-- ✅ Content (row limit, images, lazy loading)
-- ✅ Navigation (arrows, dots, keyboard)
-- ✅ Grid (rows, columns for Sections View)
-- ✅ Advanced (performance warnings, custom CSS)
+- ✅ **Basic**: Entity selection (14 mock entities)
+- ✅ **Layout**: Aspect ratio, height, image layout, grid
+- ✅ **Carousel**: Duration, transition, auto-play, pause
+- ✅ **Content**: Row limit, images, lazy loading
+- ✅ **Navigation**: Arrows, dots, keyboard
+- ✅ **Modal**: Type, size, animation, settings (NEW v2.1.0!)
+- ✅ **Performance**: Warnings, optimization
+- ✅ **Advanced**: Custom CSS
+
+**When you add a new config option to `src/types.ts`, it automatically appears here!** 🎯
 
 ### 3. **YAML Editor with Syntax Highlighting**
 

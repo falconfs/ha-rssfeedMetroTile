@@ -6,7 +6,7 @@
 
 A modern Home Assistant Lovelace card that displays RSS feed entries as animated Metro-style tiles with customizable transitions and layouts.
 
-![RSS Feed Metro Tile](https://via.placeholder.com/800x400?text=RSS+Feed+Metro+Tile+Screenshot)
+![RSS Feed Metro Tile](img.png)
 
 ## ✨ Features
 
