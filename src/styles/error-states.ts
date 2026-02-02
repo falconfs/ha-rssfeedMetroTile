@@ -86,7 +86,7 @@ export const errorStateStyles = css`
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   }
 
-  /* Fallback für fehlendes Bild */
+  /* Fallback for missing image */
   .slide-image-fallback {
     position: absolute;
     top: 0;

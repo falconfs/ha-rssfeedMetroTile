@@ -6,6 +6,7 @@ Display RSS feed entries as beautiful, animated Metro-style tiles in your Home A
 
 - 🎨 Modern Metro-style design
 - 📱 Fully responsive (desktop, tablet, mobile)
+- 🪟 Modal view for opening links (NEW!)
 - 👆 Touch gestures and keyboard navigation
 - 🎬 Multiple transition effects
 - 🖼️ Flexible image layouts
@@ -39,5 +40,6 @@ All configuration can be done through the visual editor or YAML:
 - **Carousel**: Configure slide duration, transitions, and auto-play
 - **Content**: Control which feed items to show and how images are displayed
 - **Navigation**: Enable/disable arrows, indicators, and keyboard controls
+- **Modal**: Open links in customizable modal overlays or external tabs
 
 For detailed documentation, visit the [GitHub repository](https://github.com/falconfs/ha-rssfeedMetroTile).

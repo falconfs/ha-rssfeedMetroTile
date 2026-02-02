@@ -250,6 +250,15 @@ export const EDITOR_CONTROLS: EditorControl[] = [
     dependencyValue: true,
   },
   {
+    id: 'modal_iframe_sandbox',
+    label: 'Enable iframe Sandbox Security',
+    type: 'checkbox',
+    category: 'modal',
+    dependency: 'open_in_modal',
+    dependencyValue: true,
+    helper: 'Adds security restrictions to iframe content',
+  },
+  {
     id: 'modal_fallback_to_external',
     label: 'Fallback to External Link (CORS)',
     type: 'checkbox',

@@ -123,7 +123,7 @@ keyboard_navigation: true # Enable arrow keys
 
 # Modal Settings
 open_in_modal: true # Open links in modal (default: true)
-modal_type: custom # "custom" or "ha-dialog"
+modal_type: custom # "custom" or "none" (direct external link)
 modal_size: medium # "small", "medium", "large", "fullscreen"
 modal_width: '' # Custom width (e.g. "800px" or "80%")
 modal_height: '' # Custom height (e.g. "600px" or "70%")
@@ -132,6 +132,7 @@ modal_close_on_backdrop: true # Close on backdrop click
 modal_show_close_button: true # Show X button
 modal_close_on_esc: true # Close on ESC key
 modal_show_loading: true # Show loading spinner
+modal_iframe_sandbox: true # Enable iframe security sandbox
 modal_fallback_to_external: true # Open externally if CORS blocks
 
 # Grid Layout (Sections View)
@@ -163,7 +164,7 @@ style: |
 | `show_indicators`            | boolean | `true`             | Show dot indicators                                                   |
 | `keyboard_navigation`        | boolean | `true`             | Enable keyboard controls                                              |
 | `open_in_modal`              | boolean | `true`             | Open links in modal overlay                                           |
-| `modal_type`                 | string  | `"custom"`         | Modal type: `"custom"`, `"ha-dialog"`, or `"none"` (direct external)  |
+| `modal_type`                 | string  | `"custom"`         | Modal type: `"custom"` or `"none"` (direct external link)             |
 | `modal_size`                 | string  | `"medium"`         | Modal size: `"small"`, `"medium"`, `"large"`, `"fullscreen"`          |
 | `modal_width`                | string  | `""`               | Custom modal width (e.g. `"800px"`, `"80%"`)                          |
 | `modal_height`               | string  | `""`               | Custom modal height (e.g. `"600px"`, `"70%"`)                         |
@@ -172,6 +173,7 @@ style: |
 | `modal_show_close_button`    | boolean | `true`             | Show close button in modal                                            |
 | `modal_close_on_esc`         | boolean | `true`             | Close modal on ESC key                                                |
 | `modal_show_loading`         | boolean | `true`             | Show loading spinner while loading                                    |
+| `modal_iframe_sandbox`       | boolean | `true`             | Enable iframe security sandbox restrictions                           |
 | `modal_fallback_to_external` | boolean | `true`             | Open link externally if CORS blocks iframe                            |
 | `grid_rows`                  | number  | `4`                | Rows in sections view                                                 |
 | `grid_columns`               | number  | `4`                | Columns in sections view                                              |
@@ -186,10 +188,9 @@ By default, clicking on a news tile opens the website in a modal overlay instead
 
 **Key Features:**
 
-- 🎯 **Three Modal Types**:
-  - Custom modal (iframe) - Default
-  - Home Assistant dialog integration
-  - Direct external link (no modal, no iframe issues)
+- 🎯 **Two Modal Types**:
+  - Custom modal (iframe) - Default, opens content in iframe overlay
+  - Direct external link - Opens in new tab (no modal, avoids iframe/CORS issues)
 - 📏 **Flexible Sizing**: Predefined sizes (small/medium/large/fullscreen) or custom dimensions
 - 🎬 **Animated**: Multiple animation styles (fade, slide-up, scale) or none
 - 📱 **Mobile Optimized**: Auto-fullscreen on small screens (< 720px)
@@ -232,15 +233,6 @@ modal_animation: scale
 type: custom:rssfeed-metro-tile
 entity: sensor.rss_feed
 open_in_modal: false
-```
-
-#### Home Assistant Dialog Integration
-
-```yaml
-type: custom:rssfeed-metro-tile
-entity: sensor.news_feed
-modal_type: ha-dialog
-modal_size: fullscreen
 ```
 
 ### CORS and iframe Limitations

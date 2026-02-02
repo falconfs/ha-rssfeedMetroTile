@@ -63,7 +63,7 @@ export interface FeedItem {
 
 export type TransitionType = 'slide-vertical' | 'slide-horizontal' | 'fade';
 export type ImageLayout = 'background' | 'split';
-export type ModalType = 'custom' | 'ha-dialog' | 'none';
+export type ModalType = 'custom' | 'none';
 export type ModalSize = 'small' | 'medium' | 'large' | 'fullscreen';
 export type ModalAnimation = 'fade' | 'slide-up' | 'scale' | 'none';
 
