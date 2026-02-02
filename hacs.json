@@ -1,6 +1,5 @@
 {
   "name": "RSS Feed Metro Tile",
-  "content_in_root": false,
   "render_readme": true,
   "filename": "rssfeed-metro-tile.js"
 }
