@@ -13,8 +13,8 @@ All package and build files have been updated to reflect the new version 2.1.0 w
 ### 1. **package.json**
 
 - ✅ Version: `2.0.0` → `2.1.0`
-- ✅ Author: `YOUR_NAME` → `Florian Schmidt`
-- ✅ Repository URL: `YOUR_USERNAME` → `florianschmidt`
+- ✅ Author: `YOUR_NAME` → `falconfs`
+- ✅ Repository URL: `YOUR_USERNAME` → `falconfs`
 
 ### 2. **src/constants.ts**
 
@@ -27,7 +27,7 @@ All package and build files have been updated to reflect the new version 2.1.0 w
 - ✅ HACS repository URL
 - ✅ Release download URL
 - ✅ Issues/Discussions URLs (2 instances)
-- All updated: `YOUR_USERNAME` → `florianschmidt`
+- All updated: `YOUR_USERNAME` → `falconfs`
 
 ### 4. **CHANGELOG.md**
 
@@ -37,12 +37,12 @@ All package and build files have been updated to reflect the new version 2.1.0 w
 
 ### 5. **LICENSE**
 
-- ✅ Copyright: `YOUR_NAME` → `Florian Schmidt`
+- ✅ Copyright: `YOUR_NAME` → `falconfs`
 - ✅ Year: `2026` → `2024` (fixed typo)
 
 ### 6. **info.md** (HACS info file)
 
-- ✅ Repository URL: `YOUR_USERNAME` → `florianschmidt`
+- ✅ Repository URL: `YOUR_USERNAME` → `falconfs`
 
 ---
 
@@ -70,18 +70,18 @@ Version: 2.1.0
 
 ## GitHub Repository Information
 
-**Repository:** `https://github.com/florianschmidt/ha-rssfeedMetroTile`
+**Repository:** `https://github.com/falconfs/ha-rssfeedMetroTile`
 
 ### Release URLs:
 
-- v2.1.0: https://github.com/florianschmidt/ha-rssfeedMetroTile/releases/tag/v2.1.0
-- v2.0.0: https://github.com/florianschmidt/ha-rssfeedMetroTile/releases/tag/v2.0.0
-- v1.0.0: https://github.com/florianschmidt/ha-rssfeedMetroTile/releases/tag/v1.0.0
+- v2.1.0: https://github.com/falconfs/ha-rssfeedMetroTile/releases/tag/v2.1.0
+- v2.0.0: https://github.com/falconfs/ha-rssfeedMetroTile/releases/tag/v2.0.0
+- v1.0.0: https://github.com/falconfs/ha-rssfeedMetroTile/releases/tag/v1.0.0
 
 ### Links:
 
-- Issues: https://github.com/florianschmidt/ha-rssfeedMetroTile/issues
-- Discussions: https://github.com/florianschmidt/ha-rssfeedMetroTile/discussions
+- Issues: https://github.com/falconfs/ha-rssfeedMetroTile/issues
+- Discussions: https://github.com/falconfs/ha-rssfeedMetroTile/discussions
 
 ---
 
@@ -110,11 +110,11 @@ Version: 2.1.0
    ```
 
 4. **Create GitHub Repository:**
-   - Go to https://github.com/florianschmidt
+   - Go to https://github.com/falconfs
    - Create new repository: `ha-rssfeedMetroTile`
    - Push code:
      ```bash
-     git remote add origin https://github.com/florianschmidt/ha-rssfeedMetroTile.git
+     git remote add origin https://github.com/falconfs/ha-rssfeedMetroTile.git
      git branch -M main
      git push -u origin main
      ```
@@ -139,11 +139,11 @@ Version: 2.1.0
   "name": "rssfeed-metro-tile",
   "version": "2.1.0",
   "description": "RSS Feed Metro Tile for Home Assistant",
-  "author": "Florian Schmidt",
+  "author": "falconfs",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/florianschmidt/ha-rssfeedMetroTile"
+    "url": "https://github.com/falconfs/ha-rssfeedMetroTile"
   }
 }
 ```

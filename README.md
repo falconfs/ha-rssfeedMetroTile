@@ -1,8 +1,8 @@
 # RSS Feed Metro Tile
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
-[![GitHub Release](https://img.shields.io/github/release/florianschmidt/ha-rssfeedMetroTile.svg?style=flat-square)](https://github.com/florianschmidt/ha-rssfeedMetroTile/releases)
-[![License](https://img.shields.io/github/license/florianschmidt/ha-rssfeedMetroTile.svg?style=flat-square)](LICENSE)
+[![GitHub Release](https://img.shields.io/github/release/falconfs/ha-rssfeedMetroTile.svg?style=flat-square)](https://github.com/falconfs/ha-rssfeedMetroTile/releases)
+[![License](https://img.shields.io/github/license/falconfs/ha-rssfeedMetroTile.svg?style=flat-square)](LICENSE)
 
 A modern Home Assistant Lovelace card that displays RSS feed entries as animated Metro-style tiles with customizable transitions and layouts.
 
@@ -31,14 +31,14 @@ A modern Home Assistant Lovelace card that displays RSS feed entries as animated
 1. Open HACS in your Home Assistant instance
 2. Go to "Frontend"
 3. Click the menu (⋮) and select "Custom repositories"
-4. Add `https://github.com/florianschmidt/ha-rssfeedMetroTile` as repository
+4. Add `https://github.com/falconfs/ha-rssfeedMetroTile` as repository
 5. Category: Lovelace
 6. Click "Install"
 7. Refresh your browser
 
 ### Manual Installation
 
-1. Download `rssfeed-metro-tile.js` from the [latest release](https://github.com/florianschmidt/ha-rssfeedMetroTile/releases)
+1. Download `rssfeed-metro-tile.js` from the [latest release](https://github.com/falconfs/ha-rssfeedMetroTile/releases)
 2. Copy to `<config>/www/rssfeed-metro-tile.js`
 3. Add resource to Lovelace:
 
@@ -349,8 +349,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 - [Home Assistant](https://www.home-assistant.io/)
 - [HACS](https://hacs.xyz/)
-- [Report Issues](https://github.com/florianschmidt/ha-rssfeedMetroTile/issues)
-- [Discussions](https://github.com/florianschmidt/ha-rssfeedMetroTile/discussions)
+- [Report Issues](https://github.com/falconfs/ha-rssfeedMetroTile/issues)
+- [Discussions](https://github.com/falconfs/ha-rssfeedMetroTile/discussions)
 
 ---
 

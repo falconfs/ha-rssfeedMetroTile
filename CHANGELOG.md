@@ -193,6 +193,6 @@ aspect_ratio: '1:1'
 
 ---
 
-[2.1.0]: https://github.com/florianschmidt/ha-rssfeedMetroTile/releases/tag/v2.1.0
-[2.0.0]: https://github.com/florianschmidt/ha-rssfeedMetroTile/releases/tag/v2.0.0
-[1.0.0]: https://github.com/florianschmidt/ha-rssfeedMetroTile/releases/tag/v1.0.0
+[2.1.0]: https://github.com/falconfs/ha-rssfeedMetroTile/releases/tag/v2.1.0
+[2.0.0]: https://github.com/falconfs/ha-rssfeedMetroTile/releases/tag/v2.0.0
+[1.0.0]: https://github.com/falconfs/ha-rssfeedMetroTile/releases/tag/v1.0.0

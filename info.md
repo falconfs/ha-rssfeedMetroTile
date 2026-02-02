@@ -40,4 +40,4 @@ All configuration can be done through the visual editor or YAML:
 - **Content**: Control which feed items to show and how images are displayed
 - **Navigation**: Enable/disable arrows, indicators, and keyboard controls
 
-For detailed documentation, visit the [GitHub repository](https://github.com/florianschmidt/ha-rssfeedMetroTile).
+For detailed documentation, visit the [GitHub repository](https://github.com/falconfs/ha-rssfeedMetroTile).
