@@ -1,0 +1,380 @@
+# RSS Feed Metro Tile - Demo Dashboard
+
+# Dieses Dashboard zeigt alle Konfigurationsmöglichkeiten der RSS Feed Metro Tile Card
+
+title: RSS Feed Metro Tile - Demo
+views:
+  - title: Overview
+    path: overview
+    icon: mdi:view-dashboard
+    badges: []
+    cards:
+      # 1. Basic Configuration - Default Settings
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "1. Basic - Default Settings"
+
+      # 2. Square Tile with Fade Transition
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "2. Square Tile (1:1) - Fade Transition"
+        aspect_ratio: "1:1"
+        transition: fade
+        slide_duration_sec: 7
+
+      # 3. Widescreen Format
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "3. Widescreen (16:9) - Horizontal Slide"
+        aspect_ratio: "16:9"
+        transition: slide-horizontal
+        slide_duration_sec: 4
+
+  - title: Image Layouts
+    path: image-layouts
+    icon: mdi:image-multiple
+    cards:
+      # 4. Background Layout with Blur (Default)
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "4. Background Layout (Blur)"
+        image_layout: background
+        aspect_ratio: "4:3"
+        show_images: true
+
+      # 5. Split Layout
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "5. Split Layout (Image Top, Text Bottom)"
+        image_layout: split
+        aspect_ratio: "4:3"
+        transition: slide-vertical
+
+      # 6. No Images - Text Only
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "6. Text Only (No Images)"
+        show_images: false
+        aspect_ratio: "16:9"
+        transition: fade
+
+  - title: Carousel Settings
+    path: carousel
+    icon: mdi:view-carousel
+    cards:
+      # 7. Fast Auto-Play
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "7. Fast Carousel (3s)"
+        slide_duration_sec: 3
+        auto_play: true
+        pause_on_hover: true
+
+      # 8. Slow Auto-Play
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "8. Slow Carousel (10s)"
+        slide_duration_sec: 10
+        auto_play: true
+        aspect_ratio: "1:1"
+
+      # 9. Manual Only (No Auto-Play)
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "9. Manual Navigation Only"
+        auto_play: false
+        show_navigation: true
+        show_indicators: true
+        aspect_ratio: "16:9"
+
+  - title: Navigation Controls
+    path: navigation
+    icon: mdi:navigation
+    cards:
+      # 10. All Navigation Controls
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "10. Full Navigation (Arrows + Dots + Keyboard)"
+        show_navigation: true
+        show_indicators: true
+        keyboard_navigation: true
+        aspect_ratio: "1:1"
+
+      # 11. Arrows Only
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "11. Navigation Arrows Only"
+        show_navigation: true
+        show_indicators: false
+        keyboard_navigation: true
+        aspect_ratio: "16:9"
+
+      # 12. Indicators Only
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "12. Dot Indicators Only"
+        show_navigation: false
+        show_indicators: true
+        keyboard_navigation: true
+        aspect_ratio: "4:3"
+
+      # 13. Minimal (No Controls)
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "13. Minimal - No Visible Controls"
+        show_navigation: false
+        show_indicators: false
+        keyboard_navigation: false
+        auto_play: true
+        pause_on_hover: false
+
+  - title: Content Settings
+    path: content
+    icon: mdi:text-box-multiple
+    cards:
+      # 14. Limited Items (5)
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "14. Limited Feed (5 Items)"
+        row_limit: 5
+        show_indicators: true
+        aspect_ratio: "1:1"
+
+      # 15. Limited Items (3)
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "15. Mini Feed (3 Items)"
+        row_limit: 3
+        transition: fade
+        slide_duration_sec: 6
+        aspect_ratio: "16:9"
+
+      # 16. All Items with Performance Warning
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "16. All Items (Performance Warning at 20+)"
+        row_limit: 0
+        performance_warning: 10
+        aspect_ratio: "4:3"
+
+      # 17. Lazy Loading Disabled
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "17. Eager Image Loading"
+        lazy_load_images: false
+        row_limit: 5
+        aspect_ratio: "1:1"
+
+  - title: Fixed Height
+    path: fixed-height
+    icon: mdi:arrow-expand-vertical
+    cards:
+      # 18. Small Fixed Height
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "18. Small Tile (200px)"
+        tile_height_px: 200
+        # aspect_ratio nicht gesetzt = fixed height mode
+
+      # 19. Medium Fixed Height
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "19. Medium Tile (350px)"
+        tile_height_px: 350
+        transition: slide-horizontal
+
+      # 20. Large Fixed Height
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "20. Large Tile (500px)"
+        tile_height_px: 500
+        image_layout: split
+
+  - title: Advanced Styling
+    path: advanced
+    icon: mdi:palette
+    cards:
+      # 21. Custom CSS - Blue Theme
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "21. Custom CSS - Blue Theme"
+        aspect_ratio: "1:1"
+        style: |
+          .slide-title {
+            color: #2196F3;
+            text-transform: uppercase;
+          }
+          .slide-description {
+            color: #64B5F6;
+          }
+          .timer-bubble {
+            background: #1976D2;
+          }
+
+      # 22. Custom CSS - Green Theme
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "22. Custom CSS - Green Theme"
+        aspect_ratio: "16:9"
+        image_layout: split
+        style: |
+          .slide-title {
+            color: #4CAF50;
+            font-weight: bold;
+          }
+          .slide-content {
+            background: linear-gradient(to bottom, rgba(76, 175, 80, 0.1), transparent);
+          }
+
+      # 23. Custom CSS - Dark Mode Optimized
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "23. Custom Dark Mode Style"
+        aspect_ratio: "1:1"
+        transition: fade
+        style: |
+          .carousel-wrapper {
+            background: #1a1a1a;
+          }
+          .slide-title {
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+          }
+
+  - title: Grid Layouts (Sections)
+    path: grid
+    icon: mdi:grid
+    type: sections
+    sections:
+      - type: grid
+        cards:
+          # 24. Square Grid Item (4x4)
+          - type: custom:rssfeed-metro-tile
+            entity: sensor.die_zeit
+            aspect_ratio: "1:1"
+            grid_rows: 4
+            grid_columns: 4
+            transition: fade
+
+          # 25. Wide Grid Item (4x6)
+          - type: custom:rssfeed-metro-tile
+            entity: sensor.die_zeit
+            aspect_ratio: "16:9"
+            grid_rows: 4
+            grid_columns: 6
+            image_layout: split
+
+          # 26. Tall Grid Item (6x4)
+          - type: custom:rssfeed-metro-tile
+            entity: sensor.die_zeit
+            grid_rows: 6
+            grid_columns: 4
+            transition: slide-vertical
+
+          # 27. Large Grid Item (6x6)
+          - type: custom:rssfeed-metro-tile
+            entity: sensor.die_zeit
+            aspect_ratio: "1:1"
+            grid_rows: 6
+            grid_columns: 6
+            show_navigation: true
+            show_indicators: true
+
+  - title: Special Configs
+    path: special
+    icon: mdi:star-settings
+    cards:
+      # 28. News Ticker Style (Fast, Horizontal)
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "28. News Ticker Style"
+        aspect_ratio: "16:9"
+        transition: slide-horizontal
+        slide_duration_sec: 3
+        show_navigation: false
+        show_indicators: false
+        image_layout: split
+        row_limit: 10
+
+      # 29. Magazine Style (Slow, Fade)
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "29. Magazine Style"
+        aspect_ratio: "4:3"
+        transition: fade
+        slide_duration_sec: 10
+        image_layout: background
+        show_navigation: true
+        show_indicators: true
+        row_limit: 5
+
+      # 30. Minimal Widget (No Chrome)
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "30. Minimal Widget"
+        aspect_ratio: "1:1"
+        transition: fade
+        slide_duration_sec: 5
+        show_navigation: false
+        show_indicators: false
+        keyboard_navigation: false
+        pause_on_hover: false
+        show_images: true
+        image_layout: background
+
+      # 31. Interactive Dashboard
+      - type: custom:rssfeed-metro-tile
+        entity: sensor.die_zeit
+        title: "31. Interactive Dashboard"
+        aspect_ratio: "16:9"
+        auto_play: false
+        show_navigation: true
+        show_indicators: true
+        keyboard_navigation: true
+        pause_on_hover: true
+        image_layout: split
+        row_limit: 8
+
+  - title: Comparison
+    path: comparison
+    icon: mdi:compare
+    cards:
+      # Side-by-side comparison
+      - type: horizontal-stack
+        cards:
+          # 32. Vertical Slide
+          - type: custom:rssfeed-metro-tile
+            entity: sensor.die_zeit
+            title: "32. Vertical"
+            transition: slide-vertical
+            aspect_ratio: "1:1"
+
+          # 33. Horizontal Slide
+          - type: custom:rssfeed-metro-tile
+            entity: sensor.die_zeit
+            title: "33. Horizontal"
+            transition: slide-horizontal
+            aspect_ratio: "1:1"
+
+          # 34. Fade
+          - type: custom:rssfeed-metro-tile
+            entity: sensor.die_zeit
+            title: "34. Fade"
+            transition: fade
+            aspect_ratio: "1:1"
+
+      - type: horizontal-stack
+        cards:
+          # 35. Background Layout
+          - type: custom:rssfeed-metro-tile
+            entity: sensor.die_zeit
+            title: "35. Background"
+            image_layout: background
+            aspect_ratio: "16:9"
+
+          # 36. Split Layout
+          - type: custom:rssfeed-metro-tile
+            entity: sensor.die_zeit
+            title: "36. Split"
+            image_layout: split
+            aspect_ratio: "16:9"
