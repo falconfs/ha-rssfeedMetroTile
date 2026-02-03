@@ -406,7 +406,7 @@ var RssfeedMetroTile=function(e){"use strict";function t(e,t,i,o){var s,a=argume
 
     .transition-slide-vertical .indicator.active {
       width: 8px;
-      height: 32px;
+      height: 16px;
     }
   }
 `,Je=r`

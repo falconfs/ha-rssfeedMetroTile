@@ -175,7 +175,7 @@ export const controlStyles = css`
 
     .transition-slide-vertical .indicator.active {
       width: 8px;
-      height: 32px;
+      height: 16px;
     }
   }
 `;
