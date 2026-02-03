@@ -165,8 +165,8 @@ export const controlStyles = css`
     }
 
     .indicator {
-      width: 12px;
-      height: 12px;
+      width: 8px;
+      height: 8px;
     }
 
     .indicator.active {
@@ -174,7 +174,7 @@ export const controlStyles = css`
     }
 
     .transition-slide-vertical .indicator.active {
-      width: 12px;
+      width: 8px;
       height: 32px;
     }
   }

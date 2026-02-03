@@ -396,8 +396,8 @@ var RssfeedMetroTile=function(e){"use strict";function t(e,t,i,o){var s,a=argume
     }
 
     .indicator {
-      width: 12px;
-      height: 12px;
+      width: 8px;
+      height: 8px;
     }
 
     .indicator.active {
@@ -405,7 +405,7 @@ var RssfeedMetroTile=function(e){"use strict";function t(e,t,i,o){var s,a=argume
     }
 
     .transition-slide-vertical .indicator.active {
-      width: 12px;
+      width: 8px;
       height: 32px;
     }
   }
